@@ -17,7 +17,7 @@ class Header extends Component {
       return (
         <div className="navbar-nav nav-item dropdown ml-auto">
           <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.props.username}</a>
-          <div className="dropdown-menu" aria-labelledby="dropdown02">
+          <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown02">
             <Link className="dropdown-item" to="/myposts">Your Posts</Link>
             <Link className="dropdown-item" to="/profile">Your Profile</Link>
             <div className="dropdown-divider" />
