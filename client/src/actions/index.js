@@ -294,7 +294,7 @@ export function deletePost(id, historyPush) {
 export function fetchPostsByUserId() {
 
   return function(dispatch) {
-    axios.get(`${ROOT_URL}/my_posts`, {
+    axios.get(`${ROOT_URL}/myposts`, {
       headers: {authorization: localStorage.getItem('token')},  // require auth
     })
       .then((response) => {

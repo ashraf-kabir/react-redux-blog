@@ -53,7 +53,7 @@ module.exports = function(app) {
 
   app.delete('/api/posts/:id', requireAuth, Blog.deletePost);
 
-  app.get('/api/my_posts', requireAuth, Blog.fetchPostsByAuthorId);
+  app.get('/api/myposts', requireAuth, Blog.fetchPostsByAuthorId);
 
   /**
    * Blog Comment APIs

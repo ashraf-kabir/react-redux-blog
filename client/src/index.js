@@ -47,7 +47,7 @@ ReactDOM.render(
             <Route exact path='/posts' component={PostList} />
             <Route path='/posts/new' component={RequireAuth(PostNew)} />
             <Route path='/posts/:id' component={PostDetail} />
-            <Route path='/my_posts' component={RequireAuth(PostMine)} />
+            <Route path='/myposts' component={RequireAuth(PostMine)} />
             <Route component={NoMatch} />
           </Switch>
         </div>
