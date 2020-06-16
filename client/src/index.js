@@ -19,6 +19,8 @@ import PostNew from './components/blog/post_new';
 import PostDetail from './components/blog/post_detail/index';
 import PostMine from './components/blog/post_mine';
 
+import Chart from './components/chart';
+
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
 
@@ -48,6 +50,7 @@ ReactDOM.render(
             <Route path='/posts/new' component={RequireAuth(PostNew)} />
             <Route path='/posts/:id' component={PostDetail} />
             <Route path='/myposts' component={RequireAuth(PostMine)} />
+            <Route path="/chart" component={Chart} />
             <Route component={NoMatch} />
           </Switch>
         </div>

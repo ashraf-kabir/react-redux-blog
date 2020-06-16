@@ -8,6 +8,8 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
 
+  FETCH_CHART,
+
   FETCH_POSTS,
   CREATE_POST,
   FETCH_POST,
@@ -117,6 +119,37 @@ export function fetchProfile() {
     });
   }
 }
+
+
+/**
+ * Chart information
+ */
+
+export function fetchChart() {
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/chart`).then(response => {
+      // console.log(response);
+      dispatch({
+        type: FETCH_CHART,
+        payload: response.data,
+      });
+    });
+  }
+}
+
+
+// export function fetchPosts() {
+
+//   return function(dispatch) {
+//     axios.get(`${ROOT_URL}/posts`).then((response) => {
+//       dispatch({
+//         type: FETCH_POSTS,
+//         payload: response.data,
+//       });
+//     });
+//   }
+// }
 
 export function clearProfile() {
   return { type: CLEAR_PROFILE };

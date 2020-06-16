@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/index';
 
-class PostList extends Component {
+class Welcome extends Component {
 
   componentDidMount() {
     this.props.fetchPosts();
@@ -77,4 +77,4 @@ function mapStateToProps(state) {
   return { posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(PostList);
+export default connect(mapStateToProps, { fetchPosts })(Welcome);
