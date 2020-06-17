@@ -22,9 +22,9 @@ class Chart extends Component {
   renderChart(chart) {
     // var months = [chart.month];
     // var nops = [chart.number_of_posts];
-    var months = [chart.month];
+    const months = [chart.month];
     // var months2 = JSON.parse(months);
-    var nops = [chart.number_of_posts];
+    const nops = [chart.number_of_posts];
     // var nops2 = JSON.parse(nops);
     console.log(months);
     // console.log(months2);
@@ -35,10 +35,10 @@ class Chart extends Component {
         <Bar
             data={
               {
-                labels: [chart.month],
+                labels: months,
                 datasets:[
                   {
-                    label: months,
+                    label: 'months data',
                     data: nops,
                     backgroundColor:[
                       'rgba(255, 99, 132, 0.6)',
