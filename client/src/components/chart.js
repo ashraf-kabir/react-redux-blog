@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchChart } from '../actions/index';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line, Pie, Doughnut} from 'react-chartjs-2';
 
 class Chart extends Component {
 
@@ -12,7 +12,7 @@ class Chart extends Component {
   //   data1:{}
   // }
 
-  async componentDidMount() {
+  componentDidMount() {
       this.props.fetchChart();
   }
 
@@ -105,10 +105,9 @@ class Chart extends Component {
           <p>This is a MERN stack based fully functioning blog system. Here, you can share your experience and ideas with other people.</p>
           <p><Link className="btn btn-primary btn-lg" to="/posts" role="button">Look the blog posts &raquo;</Link></p>
         </div>
-        {/* chart */}
 
         <div className="chart">
-        <Bar
+          <Bar
             data={
               {
                 labels: arrayOfMonths,
@@ -123,26 +122,111 @@ class Chart extends Component {
                       'rgba(75, 192, 192, 0.6)',
                       'rgba(153, 102, 255, 0.6)',
                       'rgba(255, 159, 64, 0.6)',
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                      'rgba(255, 206, 86, 0.6)',
+                      'rgba(75, 192, 192, 0.6)',
+                      'rgba(153, 102, 255, 0.6)',
+                      'rgba(255, 159, 64, 0.6)',
                       'rgba(255, 99, 132, 0.6)'
                     ]
                   }
                 ]
               }
             }
-            options={{
-              title:{
-                display:'Title',
-                text:'Monthly Posts Data',
-                fontSize:25
-              },
-              legend:{
-                display:this.props.displayLegend,
-                position:this.props.legendPosition
+            options={
+              {
+                title:{
+                  display:'Title',
+                  text:'Monthly Posts Data',
+                  fontSize:25
+                },
+                legend:{
+                  display:this.props.displayLegend,
+                  position:this.props.legendPosition
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
               }
-            }}
+            }
           />
-        </div>
 
+        <Line
+          data={
+            {
+              labels: arrayOfMonths,
+              datasets: [{ 
+                  data: arrayOfPosts,
+                  label: "Posts Data",
+                  borderColor: "#3e95cd",
+                  fill: true
+                }
+              ]
+            }
+          }
+          options= {
+            {
+              title: {
+                display: true,
+                text: 'Monthly Posts Data'
+              }
+            }
+          }
+        />
+
+        <Pie
+          data={
+            {
+              labels: arrayOfMonths,
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
+                  data: arrayOfPosts
+                }
+              ]
+            }
+          }
+          options={
+            {
+              title: {
+                display: true,
+                text: 'Monthly Posts Data'
+              }
+            }
+          }
+        />
+
+        <Doughnut
+          data={
+            {
+              labels: arrayOfMonths,
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
+                  data: arrayOfPosts
+                }
+              ]
+            }
+          }
+          options={
+            {
+              title: {
+                display: true,
+                text: 'Monthly Posts Data'
+              }
+            }
+          }
+        />
+
+        </div>
       </div>
     );
   }
