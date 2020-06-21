@@ -114,7 +114,7 @@ class Chart extends Component {
                 labels: arrayOfMonths,
                 datasets:[
                   {
-                    label: 'months data',
+                    label: 'posts data',
                     data: arrayOfPosts,
                     backgroundColor:[
                       'rgba(255, 99, 132, 0.6)',
@@ -132,7 +132,7 @@ class Chart extends Component {
             options={{
               title:{
                 display:'Title',
-                text:'Largest Cities In USA',
+                text:'Monthly Posts Data',
                 fontSize:25
               },
               legend:{
@@ -141,7 +141,6 @@ class Chart extends Component {
               }
             }}
           />
-
         </div>
 
       </div>
