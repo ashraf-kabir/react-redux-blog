@@ -7,9 +7,21 @@ import {Bar, Line, Pie} from 'react-chartjs-2';
 
 class Chart extends Component {
 
-  componentWillMount() {
+  // state = {
+  //   month1: '',
+  //   data1:{}
+  // }
+
+  async componentDidMount() {
       this.props.fetchChart();
   }
+
+  // handleChart = async (chart) => {
+  //   const fetchedData = await fetchData(chart);
+
+  //   console.log(fetchedData);
+  //   this.setState({ month1: month, data1: number_of_posts });
+  // }
 
   static defaultProps = {
     displayTitle: true,
@@ -18,21 +30,92 @@ class Chart extends Component {
     location:'City'
   }
 
-  renderChart(chart) {
+  // renderChart(chart) {
 
-    const months = [chart.month];
-    const nops = [chart.number_of_posts];
+  //   const months = [chart.month];
+  //   const nops = [chart.number_of_posts];
 
+  //   return (
+  //       <Bar
+  //           data={
+  //             {
+  //               labels: ['Jan', 'Feb', 'Mar'],
+  //               datasets:[
+  //                 {
+  //                   label: 'months data',
+  //                   data: [
+  //                     65, 54, 60
+  //                   ],
+  //                   backgroundColor:[
+  //                     'rgba(255, 99, 132, 0.6)',
+  //                     'rgba(54, 162, 235, 0.6)',
+  //                     'rgba(255, 206, 86, 0.6)',
+  //                     'rgba(75, 192, 192, 0.6)',
+  //                     'rgba(153, 102, 255, 0.6)',
+  //                     'rgba(255, 159, 64, 0.6)',
+  //                     'rgba(255, 99, 132, 0.6)'
+  //                   ]
+  //                 }
+  //               ]
+  //             }
+  //           }
+  //           options={{
+  //             title:{
+  //               display:'Title',
+  //               text:'Largest Cities In USA',
+  //               fontSize:25
+  //             },
+  //             legend:{
+  //               display:this.props.displayLegend,
+  //               position:this.props.legendPosition
+  //             }
+  //           }}
+  //         />
+  
+  //   );
+  // }
+
+  
+  render() {
+    // const { month1, data1 } = this.state;
+    // const {post} = this.props;
+    // console.log(chart);
+    // const {chart} = this.props;
+    const arr = toArray(this.props.charts);
+
+    console.log();
+
+    // const arr2 = JSON.stringify(this.props.month);
+    const arrayOfMonths=[];
+    arr.map(ar=>arrayOfMonths.push(ar.month)); 
+    console.log(arrayOfMonths);
+
+
+    const arrayOfPosts=[];
+    arr.map(ar=>arrayOfPosts.push(ar.number_of_posts)); 
+    console.log(arrayOfPosts);
+
+    // console.log(this.props.charts.length);
+    // const charts2 = this.props.charts;
+    // console.log(arr2);
     return (
-      <div key={chart._id}>
+      <div>
+        <div className="jumbotron">
+          <h1 className="display-3">Welcome!</h1>
+          <p>This is a MERN stack based fully functioning blog system. Here, you can share your experience and ideas with other people.</p>
+          <p><Link className="btn btn-primary btn-lg" to="/posts" role="button">Look the blog posts &raquo;</Link></p>
+        </div>
+        {/* chart */}
+
+        <div className="chart">
         <Bar
             data={
               {
-                labels: months,
+                labels: arrayOfMonths,
                 datasets:[
                   {
                     label: 'months data',
-                    data: nops,
+                    data: arrayOfPosts,
                     backgroundColor:[
                       'rgba(255, 99, 132, 0.6)',
                       'rgba(54, 162, 235, 0.6)',
@@ -58,38 +141,6 @@ class Chart extends Component {
               }
             }}
           />
-      </div>
-    );
-  }
-
-  
-  render() {
-    // const {post} = this.props;
-    // console.log(chart);
-    // const {chart} = this.props;
-    const arr = toArray(this.props.charts);
-
-    console.log();
-
-    // const arr2 = JSON.stringify(this.props.month);
-    console.log(arr);
-    // console.log(this.props.charts.length);
-    // const charts2 = this.props.charts;
-    // console.log(arr2);
-    return (
-      <div>
-        <div className="jumbotron">
-          <h1 className="display-3">Welcome!</h1>
-          <p>This is a MERN stack based fully functioning blog system. Here, you can share your experience and ideas with other people.</p>
-          <p><Link className="btn btn-primary btn-lg" to="/posts" role="button">Look the blog posts &raquo;</Link></p>
-        </div>
-        {/* chart */}
-
-        <div className="chart">
-
-          {_.map(this.props.charts, chart => {
-            return this.renderChart(chart);
-          })}
 
         </div>
 
