@@ -18,18 +18,11 @@ class Chart extends Component {
     location:'City'
   }
 
-
   renderChart(chart) {
-    // var months = [chart.month];
-    // var nops = [chart.number_of_posts];
+
     const months = [chart.month];
-    // var months2 = JSON.parse(months);
     const nops = [chart.number_of_posts];
-    // var nops2 = JSON.parse(nops);
-    console.log(months);
-    // console.log(months2);
-    console.log(nops);
-    // console.log(nops2);
+
     return (
       <div key={chart._id}>
         <Bar
@@ -73,8 +66,16 @@ class Chart extends Component {
   render() {
     // const {post} = this.props;
     // console.log(chart);
-    const {chart} = this.props;
-    console.log(chart);
+    // const {chart} = this.props;
+    const arr = toArray(this.props.charts);
+
+    console.log();
+
+    // const arr2 = JSON.stringify(this.props.month);
+    console.log(arr);
+    // console.log(this.props.charts.length);
+    // const charts2 = this.props.charts;
+    // console.log(arr2);
     return (
       <div>
         <div className="jumbotron">
@@ -87,7 +88,7 @@ class Chart extends Component {
         <div className="chart">
 
           {_.map(this.props.charts, chart => {
-              return this.renderChart(chart);
+            return this.renderChart(chart);
           })}
 
         </div>

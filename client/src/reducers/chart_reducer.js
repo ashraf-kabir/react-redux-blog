@@ -8,7 +8,7 @@ export default function(state = {}, action) {
 
   switch(action.type) {
     case FETCH_CHART:
-        return (action.payload);
+        return _.mapKeys(action.payload, '_id');
     default:
       return state;
   }
