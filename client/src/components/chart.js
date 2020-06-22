@@ -171,7 +171,7 @@ class Chart extends Component {
               labels: arrayOfMonths,
               datasets: [
                 {
-                  label: "Population (millions)",
+                  label: "Posts Data",
                   backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
                   data: arrayOfPosts
                 }
@@ -194,7 +194,7 @@ class Chart extends Component {
               labels: arrayOfMonths,
               datasets: [
                 {
-                  label: "Population (millions)",
+                  label: "Posts Data",
                   backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
                   data: arrayOfPosts
                 }
@@ -217,7 +217,7 @@ class Chart extends Component {
             labels: arrayOfMonths,
             datasets: [
               {
-                label: "posts data",
+                label: "Posts Data",
                 backgroundColor:["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#FFFF00","#17bebb","#d17a22","#ADFF2F","#c86fc9","#faa613","#00896F"],
                 data: arrayOfPosts
               }
@@ -248,7 +248,7 @@ class Chart extends Component {
               labels: arrayOfMonths,
               datasets: [
                 {
-                  label: "posts data",
+                  label: "Posts Data",
                   backgroundColor: ["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#FFFF00","#17bebb","#d17a22","#ADFF2F","#c86fc9","#faa613","#00896F"],
                   data: arrayOfPosts
                 }
@@ -264,14 +264,14 @@ class Chart extends Component {
             }
           }
         />
-
+        
         <Radar
           data={
               {
               labels: arrayOfMonths,
               datasets: [
                 {
-                  label: "1950",
+                  label: "Posts Data",
                   fill: true,
                   backgroundColor: "rgba(179,181,198,0.2)",
                   borderColor: "rgba(255,99,132,1)",
@@ -286,7 +286,7 @@ class Chart extends Component {
             {
               title: {
                 display: true,
-                text: 'Distribution in % of world population'
+                text: 'Monthly Posts Data'
               }
             }
           }
