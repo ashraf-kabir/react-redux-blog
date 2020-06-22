@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchChart } from '../actions/index';
-import {Bar, Line, Pie, Doughnut} from 'react-chartjs-2';
+import {Bar, Line, Pie, Doughnut, HorizontalBar, Polar, Radar} from 'react-chartjs-2';
 
 class Chart extends Component {
 
@@ -206,6 +206,87 @@ class Chart extends Component {
               title: {
                 display: true,
                 text: 'Monthly Posts Data'
+              }
+            }
+          }
+        />
+
+        <HorizontalBar
+        data={
+          {
+            labels: arrayOfMonths,
+            datasets: [
+              {
+                label: "posts data",
+                backgroundColor:["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#FFFF00","#17bebb","#d17a22","#ADFF2F","#c86fc9","#faa613","#00896F"],
+                data: arrayOfPosts
+              }
+            ]
+          }
+        }
+        options={
+          {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'Monthly Posts Data'
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        }
+        />
+
+        <Polar
+          data={
+              {
+              labels: arrayOfMonths,
+              datasets: [
+                {
+                  label: "posts data",
+                  backgroundColor: ["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#FFFF00","#17bebb","#d17a22","#ADFF2F","#c86fc9","#faa613","#00896F"],
+                  data: arrayOfPosts
+                }
+              ]
+            }
+          }
+          options={
+            {
+              title: {
+                display: true,
+                text: 'Monthly Posts Data'
+              }
+            }
+          }
+        />
+
+        <Radar
+          data={
+              {
+              labels: arrayOfMonths,
+              datasets: [
+                {
+                  label: "1950",
+                  fill: true,
+                  backgroundColor: "rgba(179,181,198,0.2)",
+                  borderColor: "rgba(255,99,132,1)",
+                  pointBorderColor: "#fff",
+                  pointBackgroundColor: "rgba(179,181,198,1)",
+                  data: arrayOfPosts
+                }
+              ]
+            }
+          }
+          options={
+            {
+              title: {
+                display: true,
+                text: 'Distribution in % of world population'
               }
             }
           }
