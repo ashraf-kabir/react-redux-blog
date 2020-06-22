@@ -115,7 +115,7 @@ class Chart extends Component {
                   {
                     label: 'posts data',
                     data: arrayOfPosts,
-                    backgroundColor:["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#dbff76","#17bebb","#d17a22","#a1e44d","#c86fc9","#faa613","#00896F"]
+                    backgroundColor:["#845EC2", "#D65DB1","#759aab","#fa7e61","#59656f","#FFFF00","#17bebb","#d17a22","#ADFF2F","#c86fc9","#faa613","#00896F"]
                   }
                 ]
               }
