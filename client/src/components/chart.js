@@ -14,11 +14,12 @@ import {
 } from 'react-chartjs-2';
 
 class Chart extends Component {
-
   componentDidMount() {
     this.props.fetchChart();
     this.props.fetchChart2();
   }
+
+  componentDidUpdate() {}
 
   static defaultProps = {
     displayTitle: true,
@@ -178,7 +179,7 @@ class Chart extends Component {
                 text: 'Monthly Posts Data',
               },
               scales: {
-                xAxes: [
+                yAxes: [
                   {
                     ticks: {
                       beginAtZero: true,
