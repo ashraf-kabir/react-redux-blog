@@ -48,19 +48,18 @@ class Header extends Component {
           <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleContainer" aria-controls="navbarsExampleContainer" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
-          <Link className="navbar-brand" to="/">Blog</Link>
+          <Link className="navbar-brand" to="/">Brand</Link>
 
           <div className="collapse navbar-collapse" id="navbarsExampleContainer">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
+                <Link className="nav-link" to="/dashboard">Dashboard</Link>
+              </li>
+              
+              <li className="nav-item">
                 <Link className="nav-link" to="/posts">Posts</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/chart">Chart</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/chart2">Chart2</Link>
-              </li>
+              
               <li className="nav-item">
                 <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/haichao-yu/react-redux-blog">GitHub Repo</a>
               </li>
