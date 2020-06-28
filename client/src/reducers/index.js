@@ -6,6 +6,7 @@ import profileReducer from './profile_reducer';
 import postsReducer from './posts_reducer';
 import commentsReducer from './comments_reducer';
 import chartsReducer from './chart_reducer';
+import chartsReducer2 from './chart_reducer2';
 
 const rootReducer = combineReducers({
   form: formReducer,  // the form property of state is going to be produced by ReduxForm reducer
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   posts: postsReducer,
   comments: commentsReducer,
   charts: chartsReducer,
+  chart2: chartsReducer2,
 });
 
 export default rootReducer;

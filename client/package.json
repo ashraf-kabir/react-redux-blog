@@ -6,6 +6,7 @@
     "axios": "^0.16.2",
     "chart.js": "^2.9.3",
     "lodash": "^4.17.4",
+    "mdbreact": "^4.27.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",

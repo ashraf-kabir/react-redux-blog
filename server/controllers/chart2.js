@@ -1,5 +1,4 @@
 let _ = require('lodash');
-const Chart = require('../models/chart');
 const Chart2 = require('../models/chart2');
 
 /**
@@ -9,7 +8,7 @@ const Chart2 = require('../models/chart2');
  * @param res
  * @param next
  */
-exports.fetchCharts = function(req, res, next) {
+exports.fetchChart2 = function(req, res, next) {
 
   // Return chart info
   // const chart = ({
@@ -20,7 +19,7 @@ exports.fetchCharts = function(req, res, next) {
   //   chart: chart
   // });
 
-  Chart
+  Chart2
     .find({})
     .select({})
     .exec(function(err, charts) {

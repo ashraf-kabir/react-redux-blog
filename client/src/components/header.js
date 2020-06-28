@@ -59,6 +59,9 @@ class Header extends Component {
                 <Link className="nav-link" to="/chart">Chart</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/chart2">Chart2</Link>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/haichao-yu/react-redux-blog">GitHub Repo</a>
               </li>
             </ul>

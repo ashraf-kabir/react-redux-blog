@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
+// import Sidebar from './components/sidebar';
 import Header from './components/header';
 import Footer from './components/footer';
 import NoMatch from './components/nomatch';
@@ -20,6 +21,7 @@ import PostDetail from './components/blog/post_detail/index';
 import PostMine from './components/blog/post_mine';
 
 import Chart from './components/chart';
+import Chart2 from './components/chart2';
 
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -38,7 +40,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
+        {/* <Sidebar /> */}
         <Header />
+        
         <div className="container" id="content">
           <Switch>
             <Route exact path='/' component={Welcome} />
@@ -51,6 +55,7 @@ ReactDOM.render(
             <Route path='/posts/:id' component={PostDetail} />
             <Route path='/myposts' component={RequireAuth(PostMine)} />
             <Route path="/chart" component={Chart} />
+            <Route path="/chart2" component={Chart2} />
             <Route component={NoMatch} />
           </Switch>
         </div>

@@ -2,19 +2,19 @@ import _, { result, toArray } from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchChart } from '../actions/index';
+import { fetchChart2 } from '../actions/index';
 import {Bar, Line, Pie, Doughnut, HorizontalBar, Polar, Radar} from 'react-chartjs-2';
 
-class Chart extends Component {
+class Chart2 extends Component {
 
   // state = {
   //   month1: '',
   //   data1:{}
   // }
 
-  componentDidMount() {
-      this.props.fetchChart();
-      // this.props.fetchChart2();
+  componentWillMount() {
+    //   this.props.fetchChart();
+      this.props.fetchChart2();
   }
 
   // handleChart = async (chart) => {
@@ -30,70 +30,24 @@ class Chart extends Component {
     legendPosition:'right',
     location:'City'
   }
-
-  // renderChart(chart) {
-
-  //   const months = [chart.month];
-  //   const nops = [chart.number_of_posts];
-
-  //   return (
-  //       <Bar
-  //           data={
-  //             {
-  //               labels: ['Jan', 'Feb', 'Mar'],
-  //               datasets:[
-  //                 {
-  //                   label: 'months data',
-  //                   data: [
-  //                     65, 54, 60
-  //                   ],
-  //                   backgroundColor:[
-  //                     'rgba(255, 99, 132, 0.6)',
-  //                     'rgba(54, 162, 235, 0.6)',
-  //                     'rgba(255, 206, 86, 0.6)',
-  //                     'rgba(75, 192, 192, 0.6)',
-  //                     'rgba(153, 102, 255, 0.6)',
-  //                     'rgba(255, 159, 64, 0.6)',
-  //                     'rgba(255, 99, 132, 0.6)'
-  //                   ]
-  //                 }
-  //               ]
-  //             }
-  //           }
-  //           options={{
-  //             title:{
-  //               display:'Title',
-  //               text:'Largest Cities In USA',
-  //               fontSize:25
-  //             },
-  //             legend:{
-  //               display:this.props.displayLegend,
-  //               position:this.props.legendPosition
-  //             }
-  //           }}
-  //         />
-  
-  //   );
-  // }
-
   
   render() {
     // const { month1, data1 } = this.state;
     // const {post} = this.props;
     // console.log(chart);
     // const {chart} = this.props;
-    const arr = toArray(this.props.charts);
+    const arr = toArray(this.props.chart2);
 
     console.log(arr);
 
     // const arr2 = JSON.stringify(this.props.month);
     const arrayOfMonths=[];
-    arr.map(ar=>arrayOfMonths.push(ar.month)); 
+    arr.map(ar=>arrayOfMonths.push(ar.month2)); 
     console.log(arrayOfMonths);
 
 
     const arrayOfPosts=[];
-    arr.map(ar=>arrayOfPosts.push(ar.number_of_posts)); 
+    arr.map(ar=>arrayOfPosts.push(ar.number_of_posts2)); 
     console.log(arrayOfPosts);
 
     // console.log(this.props.charts.length);
@@ -165,7 +119,7 @@ class Chart extends Component {
                 text: 'Monthly Posts Data'
               },
               scales: {
-                xAxes: [{
+                yAxes: [{
                   ticks: {
                     beginAtZero: true
                   }
@@ -310,7 +264,9 @@ class Chart extends Component {
 
 
 function mapStateToProps(state) {
-  return { charts: state.charts };
+  return {
+    chart2: state.chart2
+  };
 }
 
-export default connect(mapStateToProps, { fetchChart })(Chart);
+export default connect(mapStateToProps, { fetchChart2 })(Chart2);

@@ -9,6 +9,7 @@ import {
   UPDATE_PROFILE,
 
   FETCH_CHART,
+  FETCH_CHART2,
 
   FETCH_POSTS,
   CREATE_POST,
@@ -132,6 +133,19 @@ export function fetchChart() {
       // console.log(response);
       dispatch({
         type: FETCH_CHART,
+        payload: response.data,
+      });
+    });
+  }
+}
+
+export function fetchChart2() {
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/chart2`).then(response => {
+      // console.log(response);
+      dispatch({
+        type: FETCH_CHART2,
         payload: response.data,
       });
     });
