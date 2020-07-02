@@ -5,6 +5,9 @@ export const FETCH_PROFILE = 'fetch_profile';
 export const CLEAR_PROFILE = 'clear_profile';
 export const UPDATE_PROFILE = 'update_profile';
 
+export const FETCH_CHART = 'fetch_chart';
+export const FETCH_CHART2 = 'fetch_chart2';
+
 export const FETCH_POSTS = 'fetch_posts';
 export const CREATE_POST = 'create_post';
 export const FETCH_POST = 'fetch_post';

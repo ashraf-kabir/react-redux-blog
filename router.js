@@ -1,6 +1,8 @@
 const Authentication = require('./controllers/authentication');
 const Profile = require('./controllers/userinfo');
 const Blog = require('./controllers/blog');
+const Chart = require('./controllers/chart');
+const Chart2 = require('./controllers/chart2');
 
 // service
 const passport = require('passport');
@@ -44,6 +46,10 @@ module.exports = function(app) {
   app.get('/api/posts', Blog.fetchPosts);
 
   app.post('/api/posts', requireAuth, Blog.createPost);
+
+  // chart API
+  app.get('/api/chart', Chart.fetchCharts);
+  app.get('/api/chart2', Chart2.fetchChart2);
 
   app.get('/api/posts/:id', Blog.fetchPost);
 

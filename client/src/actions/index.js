@@ -8,6 +8,9 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
 
+  FETCH_CHART,
+  FETCH_CHART2,
+
   FETCH_POSTS,
   CREATE_POST,
   FETCH_POST,
@@ -45,8 +48,8 @@ export function signinUser({ email, password }, historyPush, historyReplace) {
           payload: response.data.username,
         });
 
-        // - Redirect (PUSH) to the route '/posts'
-        historyPush('/posts');
+        // - Redirect (PUSH) to the route '/dashboard'
+        historyPush('/dashboard');
       })
       .catch(() => {  // If request is bad (sign in failed) ...
 
@@ -117,6 +120,50 @@ export function fetchProfile() {
     });
   }
 }
+
+
+/**
+ * Chart information
+ */
+
+export function fetchChart() {
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/chart`).then(response => {
+      // console.log(response);
+      dispatch({
+        type: FETCH_CHART,
+        payload: response.data,
+      });
+    });
+  }
+}
+
+export function fetchChart2() {
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/chart2`).then(response => {
+      // console.log(response);
+      dispatch({
+        type: FETCH_CHART2,
+        payload: response.data,
+      });
+    });
+  }
+}
+
+
+// export function fetchPosts() {
+
+//   return function(dispatch) {
+//     axios.get(`${ROOT_URL}/posts`).then((response) => {
+//       dispatch({
+//         type: FETCH_POSTS,
+//         payload: response.data,
+//       });
+//     });
+//   }
+// }
 
 export function clearProfile() {
   return { type: CLEAR_PROFILE };
