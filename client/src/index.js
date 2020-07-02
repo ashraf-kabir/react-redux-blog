@@ -57,7 +57,7 @@ ReactDOM.render(
             <Route path='/posts/new' component={RequireAuth(PostNew)} />
             <Route path='/posts/:id' component={PostDetail} />
             <Route path='/myposts' component={RequireAuth(PostMine)} />
-            <Route path="/dashboard" component={RequireAuth(Dashboard)} />
+            <Route exact path="/dashboard" component={RequireAuth(Dashboard)} />
             <Route path="/chart" component={Chart} />
             <Route path="/chart2" component={Chart2} />
             <Route component={NoMatch} />

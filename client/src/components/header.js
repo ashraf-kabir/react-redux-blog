@@ -72,24 +72,25 @@ class Header extends Component {
     return (
       <nav className='navbar navbar-inverse bg-inverse navbar-toggleable-md fixed-top'>
         <div className='container'>
+          <Link className='navbar-brand' to='/'>
+            Brand
+          </Link>
+
           <button
             className='navbar-toggler navbar-toggler-right'
             type='button'
             data-toggle='collapse'
-            data-target='#navbarsExampleContainer'
-            aria-controls='navbarsExampleContainer'
+            data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
             <span className='navbar-toggler-icon' />
           </button>
-          <Link className='navbar-brand' to='/'>
-            Brand
-          </Link>
 
           <div
             className='collapse navbar-collapse'
-            id='navbarsExampleContainer'
+            id='navbarSupportedContent'
           >
             <ul className='navbar-nav mr-auto'>
               <li className='nav-item'>

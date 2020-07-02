@@ -48,8 +48,8 @@ export function signinUser({ email, password }, historyPush, historyReplace) {
           payload: response.data.username,
         });
 
-        // - Redirect (PUSH) to the route '/posts'
-        historyPush('/posts');
+        // - Redirect (PUSH) to the route '/dashboard'
+        historyPush('/dashboard');
       })
       .catch(() => {  // If request is bad (sign in failed) ...
 

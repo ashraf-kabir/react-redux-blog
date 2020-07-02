@@ -6,8 +6,8 @@ import { signinUser } from '../../actions';
 class Signin extends Component {
   componentWillMount() {
     if (this.props.authenticated) {
-      // if the user already signed in, navigate to '/posts'
-      this.props.history.replace('/posts');
+      // if the user already signed in, navigate to '/dashboard'
+      this.props.history.replace('/dashboard');
     }
   }
 
