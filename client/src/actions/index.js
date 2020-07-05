@@ -10,6 +10,7 @@ import {
 
   FETCH_CHART,
   FETCH_CHART2,
+  FETCH_TESTDATA,
 
   FETCH_POSTS,
   CREATE_POST,
@@ -146,6 +147,19 @@ export function fetchChart2() {
       // console.log(response);
       dispatch({
         type: FETCH_CHART2,
+        payload: response.data,
+      });
+    });
+  }
+}
+
+export function fetchTestData() {
+
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/tdata`).then(response => {
+      // console.log(response);
+      dispatch({
+        type: FETCH_TESTDATA,
         payload: response.data,
       });
     });

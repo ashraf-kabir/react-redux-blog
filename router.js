@@ -3,6 +3,7 @@ const Profile = require('./controllers/userinfo');
 const Blog = require('./controllers/blog');
 const Chart = require('./controllers/chart');
 const Chart2 = require('./controllers/chart2');
+const Tdata = require('./controllers/testdata');
 
 // service
 const passport = require('passport');
@@ -50,6 +51,7 @@ module.exports = function(app) {
   // chart API
   app.get('/api/chart', Chart.fetchCharts);
   app.get('/api/chart2', Chart2.fetchChart2);
+  app.get('/api/tdata', Tdata.fetchTestData);
 
   app.get('/api/posts/:id', Blog.fetchPost);
 

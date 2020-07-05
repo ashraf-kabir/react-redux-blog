@@ -70,7 +70,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className='navbar navbar-inverse bg-inverse navbar-toggleable-md fixed-top'>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
             Brand

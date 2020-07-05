@@ -2,7 +2,7 @@ import _, { result, toArray } from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchChart, fetchChart2 } from '../actions/index';
+import { fetchChart, fetchChart2, fetchTestData } from '../actions/index';
 import {
   Bar,
   Line,
@@ -13,10 +13,13 @@ import {
   Radar,
 } from 'react-chartjs-2';
 
+import { Card, Button } from 'react-bootstrap';
+
 class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchChart();
     this.props.fetchChart2();
+    this.props.fetchTestData();
   }
 
   componentDidUpdate() {}
@@ -33,21 +36,79 @@ class Dashboard extends Component {
     const arrayOfMonths = [];
     const arrayOfPosts = [];
     const arr = toArray(this.props.charts);
-    console.log(arr);
+    // console.log(arr);
     arr.map((ar) => arrayOfMonths.push(ar.month));
-    console.log(arrayOfMonths);
+    // console.log(arrayOfMonths);
     arr.map((ar) => arrayOfPosts.push(ar.number_of_posts));
-    console.log(arrayOfPosts);
+    // console.log(arrayOfPosts);
 
     // chart 2
     const arrayOfMonths2 = [];
     const arrayOfPosts2 = [];
     const arr2 = toArray(this.props.chart2);
-    console.log(arr2);
+    // console.log(arr2);
     arr2.map((ar2) => arrayOfMonths2.push(ar2.month2));
-    console.log(arrayOfMonths2);
+    // console.log(arrayOfMonths2);
     arr2.map((ar2) => arrayOfPosts2.push(ar2.number_of_posts2));
-    console.log(arrayOfPosts2);
+    // console.log(arrayOfPosts2);
+
+    // testdata
+    const tdata = toArray(this.props.testdata);
+    // console.log(tdata);
+    var tdata2 = tdata;
+    // arr = JSON.parse(JSON.stringify(arr).replace(/\s(?=\w+":)/g, ""));
+    // tdata2 = JSON.parse(JSON.stringify(tdata).replace(/\s/g, ""));
+    tdata2 = JSON.parse(JSON.stringify(tdata).replace(/\s/g, ''));
+    // console.log(tdata);
+    // console.log(tdata2);
+
+    var totalImpressions = [];
+    tdata2.map((ar5) =>
+      totalImpressions.push(ar5.LifetimePostTotalImpressions)
+    );
+    // console.log(totalImpressions);
+
+    // table
+    buildTable(tdata2);
+
+    var totalReach2 = [];
+    var posted = [];
+
+    tdata2.map((ar7) => totalReach2.push(ar7.LifetimePostTotalReach));
+    tdata2.map((ar8) => posted.push(ar8.Posted));
+    
+
+    function buildTable(tdata2) {
+      var table = document.getElementById('myTable');
+      const totalReach = [];
+      const totalOrganicReach = [];
+      tdata2.map((ar3) => totalReach.push(ar3.LifetimePostTotalReach));
+      tdata2.map((ar4) => totalOrganicReach.push(ar4.LifetimePostorganicreach));
+      // console.log(totalReach);
+      // console.log(totalOrganicReach);
+      for (var i = 0; i < tdata2.length; i++) {
+        var row = `<tr>
+                      <td>${i}</td>
+                      <td>${tdata2[i].LifetimePostTotalReach}</td>
+                      <td>${tdata2[i].LifetimePostorganicreach}</td>
+                  </tr>`;
+        table.innerHTML += row;
+      }
+    }
+
+    // scorecard: sum & avg
+    var sumOfTotalImpressions = 0;
+    var avgOfTotalImpressions = 0;
+    // console.log(totalImpressions);
+
+    for (var j = 0; j < tdata2.length; j++) {
+      //loop through the array
+      sumOfTotalImpressions += tdata2[j].LifetimePostTotalImpressions; //Do the math!
+    }
+
+    avgOfTotalImpressions = sumOfTotalImpressions / tdata2.length;
+
+    console.log(avgOfTotalImpressions);
 
     return (
       <div className='row'>
@@ -68,6 +129,60 @@ class Dashboard extends Component {
               </Link>
             </p>
           </div>
+        </div>
+
+        <div className='col-md-6 mb-4'>
+          <Card style={{ width: '18rem' }}>
+            <Card.Body>
+              <Card.Title>Avg Post Impressions</Card.Title>
+              <Card.Text>{avgOfTotalImpressions}</Card.Text>
+              <Button variant='primary'>Test Button</Button>
+            </Card.Body>
+          </Card>
+        </div>
+
+        <div className='col-md-12'>
+          <div className='mb-5'>
+            <Line
+              data={{
+                labels: posted,
+                datasets: [
+                  {
+                    data: totalReach2,
+                    label: 'LifetimePostTotalReach Data',
+                    borderColor: '#3e95cd',
+                    fill: true,
+                  },
+                ],
+              }}
+              options={{
+                title: {
+                  display: true,
+                  text: 'Lifetime Post Total Reach',
+                },
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true,
+                      },
+                    },
+                  ],
+                },
+              }}
+            />
+          </div>
+        </div>
+
+        <div className='col-md-12'>
+          <table className='table table-striped'>
+            <tr className='bg-info'>
+              <th>Count</th>
+              <th>Lifetime Post Total Reach</th>
+              <th>Lifetime Post organic reach</th>
+            </tr>
+            <tbody id='myTable'></tbody>
+          </table>
         </div>
 
         <div className='col-md-6'>
@@ -392,7 +507,12 @@ function mapStateToProps(state) {
   return {
     charts: state.charts,
     chart2: state.chart2,
+    testdata: state.testdata,
   };
 }
 
-export default connect(mapStateToProps, { fetchChart, fetchChart2 })(Dashboard);
+export default connect(mapStateToProps, {
+  fetchChart,
+  fetchChart2,
+  fetchTestData,
+})(Dashboard);

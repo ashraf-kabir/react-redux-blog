@@ -7,6 +7,7 @@ export const UPDATE_PROFILE = 'update_profile';
 
 export const FETCH_CHART = 'fetch_chart';
 export const FETCH_CHART2 = 'fetch_chart2';
+export const FETCH_TESTDATA = 'fetch_testdata';
 
 export const FETCH_POSTS = 'fetch_posts';
 export const CREATE_POST = 'create_post';
