@@ -110,6 +110,15 @@ class Dashboard extends Component {
 
     console.log(avgOfTotalImpressions);
 
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+          color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+  }
+
     return (
       <div className='row'>
         <div className='col-md-12'>
@@ -159,6 +168,45 @@ class Dashboard extends Component {
                 title: {
                   display: true,
                   text: 'Lifetime Post Total Reach',
+                },
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        beginAtZero: true,
+                      },
+                    },
+                  ],
+                },
+              }}
+            />
+          </div>
+        </div>
+
+        <div className='col-md-12'>
+          <div className='mb-5'>
+            <Bar
+              data={{
+                labels: posted,
+                datasets: [
+                  {
+                    label: 'posts data',
+                    data: totalReach2,
+                    backgroundColor: [
+
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                title: {
+                  display: 'Title',
+                  text: 'Monthly Posts Data',
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: 'top',
                 },
                 scales: {
                   yAxes: [
