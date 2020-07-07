@@ -68,6 +68,10 @@ class Dashboard extends Component {
     );
     // console.log(totalImpressions);
 
+    const type1 = [];
+    tdata2.map((ar9) => type1.push(ar9.Type));
+
+
     // table
     buildTable(tdata2);
 
@@ -76,14 +80,17 @@ class Dashboard extends Component {
 
     tdata2.map((ar7) => totalReach2.push(ar7.LifetimePostTotalReach));
     tdata2.map((ar8) => posted.push(ar8.Posted));
-    
 
     function buildTable(tdata2) {
       var table = document.getElementById('myTable');
       const totalReach = [];
       const totalOrganicReach = [];
+      const type = [];
+
       tdata2.map((ar3) => totalReach.push(ar3.LifetimePostTotalReach));
       tdata2.map((ar4) => totalOrganicReach.push(ar4.LifetimePostorganicreach));
+      tdata2.map((ar9) => type.push(ar9.Type));
+
       // console.log(totalReach);
       // console.log(totalOrganicReach);
       for (var i = 0; i < tdata2.length; i++) {
@@ -91,6 +98,7 @@ class Dashboard extends Component {
                       <td>${i}</td>
                       <td>${tdata2[i].LifetimePostTotalReach}</td>
                       <td>${tdata2[i].LifetimePostorganicreach}</td>
+                      <td>${tdata2[i].Type}</td>
                   </tr>`;
         table.innerHTML += row;
       }
@@ -103,7 +111,8 @@ class Dashboard extends Component {
 
     for (var j = 0; j < tdata2.length; j++) {
       //loop through the array
-      sumOfTotalImpressions += tdata2[j].LifetimePostTotalImpressions; //Do the math!
+      sumOfTotalImpressions += tdata2[j].LifetimePostTotalImpressions;
+      //Do the math!
     }
 
     avgOfTotalImpressions = sumOfTotalImpressions / tdata2.length;
@@ -113,11 +122,11 @@ class Dashboard extends Component {
     function getRandomColor() {
       var letters = '0123456789ABCDEF'.split('');
       var color = '#';
-      for (var i = 0; i < 6; i++ ) {
-          color += letters[Math.floor(Math.random() * 16)];
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
       }
       return color;
-  }
+    }
 
     return (
       <div className='row'>
@@ -192,9 +201,7 @@ class Dashboard extends Component {
                   {
                     label: 'posts data',
                     data: totalReach2,
-                    backgroundColor: [
-
-                    ],
+                    backgroundColor: [],
                   },
                 ],
               }}
@@ -223,11 +230,48 @@ class Dashboard extends Component {
         </div>
 
         <div className='col-md-12'>
+          <div className='mb-5'>
+            <Pie
+              data={{
+                labels: type1,
+                datasets: [
+                  {
+                    label: 'Posts Data',
+                    backgroundColor: [
+                      '#3e95cd',
+                      '#8e5ea2',
+                      '#3cba9f',
+                      '#e8c3b9',
+                      '#c45850',
+                      '#3e95cd',
+                      '#8e5ea2',
+                      '#3cba9f',
+                      '#e8c3b9',
+                      '#c45850',
+                      '#3e95cd',
+                      '#8e5ea2',
+                    ],
+                    data: [20, 15],
+                  },
+                ],
+              }}
+              options={{
+                title: {
+                  display: true,
+                  text: 'Monthly Posts Data',
+                },
+              }}
+            />
+          </div>
+        </div>
+
+        <div className='col-md-12'>
           <table className='table table-striped'>
             <tr className='bg-info'>
               <th>Count</th>
               <th>Lifetime Post Total Reach</th>
               <th>Lifetime Post organic reach</th>
+              <th>Type</th>
             </tr>
             <tbody id='myTable'></tbody>
           </table>

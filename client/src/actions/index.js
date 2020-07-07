@@ -166,6 +166,19 @@ export function fetchTestData() {
   }
 }
 
+// export function fetchPhotoData() {
+
+//   return function(dispatch) {
+//     axios.get(`${ROOT_URL}/photodata`).then(response => {
+//       // console.log(response);
+//       dispatch({
+//         type: FETCH_TESTDATA,
+//         payload: response.data,
+//       });
+//     });
+//   }
+// }
+
 
 // export function fetchPosts() {
 
